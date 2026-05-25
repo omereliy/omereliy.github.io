@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Omer Eliyahu — Automation & AI Systems Engineer</title>
+<meta name="description" content="Omer Eliyahu — software engineer building automation, cloud infrastructure, and open-source AI agent tooling. Portfolio and selected projects." />
+<style>
+  :root{
+    --bg:#0b0e14;
+    --surface:#12161f;
+    --surface-2:#171c28;
+    --border:#242b3d;
+    --text:#c4ccda;
+    --bright:#e9eef6;
+    --muted:#7d8696;
+    --accent:#7aa2f7;
+    --accent-soft:rgba(122,162,247,.13);
+    --green:#9ece6a;
+    --mono:"SF Mono",ui-monospace,"JetBrains Mono","Fira Code",Menlo,Consolas,monospace;
+    --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--sans);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:#0b0e14}
+
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px}
+
+  /* ---- nav ---- */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    backdrop-filter:blur(12px);
+    background:rgba(11,14,20,.78);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s;
+  }
+  nav.scrolled{border-bottom-color:var(--border)}
+  .nav-inner{
+    max-width:920px;margin:0 auto;padding:14px 28px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .nav-logo{font-family:var(--mono);font-weight:600;color:var(--bright);font-size:15px;letter-spacing:-.3px}
+  .nav-logo span{color:var(--accent)}
+  .nav-links{display:flex;gap:26px}
+  .nav-links a{font-size:13.5px;color:var(--muted);transition:color .2s}
+  .nav-links a:hover{color:var(--bright)}
+  @media(max-width:600px){.nav-links{gap:16px}.nav-links a{font-size:12.5px}}
+  @media(max-width:420px){.nav-links a:nth-child(3){display:none}}
+
+  /* ---- hero ---- */
+  header.hero{
+    position:relative;
+    padding:170px 0 110px;
+  }
+  .hero-glow{
+    position:absolute;top:-120px;left:50%;transform:translateX(-50%);
+    width:680px;height:520px;
+    background:radial-gradient(ellipse at center,rgba(122,162,247,.16),transparent 68%);
+    pointer-events:none;z-index:0;
+  }
+  .hero .wrap{position:relative;z-index:1}
+  .kicker{
+    font-family:var(--mono);font-size:13px;color:var(--accent);
+    letter-spacing:.5px;margin-bottom:18px;
+  }
+  h1{
+    font-size:clamp(38px,7vw,62px);
+    line-height:1.05;letter-spacing:-1.5px;
+    color:var(--bright);font-weight:700;margin-bottom:10px;
+  }
+  .hero-role{
+    font-size:clamp(18px,3vw,23px);
+    color:var(--text);font-weight:500;margin-bottom:26px;
+  }
+  .hero-role b{color:var(--accent);font-weight:600}
+  .hero-intro{
+    font-size:17px;color:var(--muted);max-width:600px;margin-bottom:34px;
+  }
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:11px 20px;border-radius:9px;
+    font-size:14px;font-weight:500;
+    border:1px solid var(--border);
+    transition:all .2s;
+  }
+  .btn svg{width:16px;height:16px}
+  .btn-primary{background:var(--accent);color:#0b0e14;border-color:var(--accent);font-weight:600}
+  .btn-primary:hover{background:#9bb8f9;border-color:#9bb8f9;transform:translateY(-2px)}
+  .btn-ghost{background:var(--surface);color:var(--text)}
+  .btn-ghost:hover{border-color:var(--accent);color:var(--bright);transform:translateY(-2px)}
+
+  /* ---- sections ---- */
+  section{padding:74px 0;position:relative}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:38px}
+  .sec-num{font-family:var(--mono);font-size:14px;color:var(--accent)}
+  .sec-title{
+    font-size:clamp(24px,4vw,31px);color:var(--bright);
+    font-weight:700;letter-spacing:-.7px;
+  }
+  .sec-line{flex:1;height:1px;background:var(--border)}
+
+  .about p{font-size:17px;max-width:680px;color:var(--text)}
+  .about p + p{margin-top:16px}
+  .about strong{color:var(--bright);font-weight:600}
+
+  /* ---- projects ---- */
+  .project{
+    background:var(--surface);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:30px 30px 26px;
+    margin-bottom:22px;
+    transition:border-color .25s,transform .25s;
+  }
+  .project:hover{border-color:#39435f;transform:translateY(-3px)}
+  .proj-top{
+    display:flex;justify-content:space-between;align-items:flex-start;
+    gap:18px;flex-wrap:wrap;margin-bottom:6px;
+  }
+  .proj-name{
+    font-size:21px;color:var(--bright);font-weight:650;
+    font-family:var(--mono);letter-spacing:-.5px;
+  }
+  .proj-name .arrow{color:var(--accent);transition:transform .2s;display:inline-block}
+  .project:hover .proj-name .arrow{transform:translate(3px,-3px)}
+  .proj-context{font-size:12.5px;color:var(--muted);font-family:var(--mono);white-space:nowrap}
+  .proj-tag-role{
+    display:inline-block;font-size:12px;color:var(--accent);
+    background:var(--accent-soft);border:1px solid rgba(122,162,247,.25);
+    padding:2px 10px;border-radius:20px;margin-bottom:14px;
+  }
+  .proj-desc{font-size:15.5px;color:var(--text);margin-bottom:18px}
+  .stack{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{
+    font-family:var(--mono);font-size:11.5px;
+    color:var(--muted);background:var(--surface-2);
+    border:1px solid var(--border);
+    padding:4px 10px;border-radius:6px;
+  }
+
+  /* ---- experience ---- */
+  .xp{
+    display:grid;grid-template-columns:170px 1fr;gap:8px 26px;
+    padding:22px 0;border-top:1px solid var(--border);
+  }
+  .xp:last-child{border-bottom:1px solid var(--border)}
+  .xp-date{font-family:var(--mono);font-size:13px;color:var(--muted);padding-top:2px}
+  .xp-role{font-size:17px;color:var(--bright);font-weight:600}
+  .xp-org{color:var(--accent);font-weight:500}
+  .xp-desc{font-size:15px;color:var(--muted);margin-top:5px}
+  @media(max-width:560px){.xp{grid-template-columns:1fr;gap:4px}.xp-date{padding-top:0}}
+
+  /* ---- skills ---- */
+  .skill-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  @media(max-width:560px){.skill-grid{grid-template-columns:1fr}}
+  .skill-card{
+    background:var(--surface);border:1px solid var(--border);
+    border-radius:11px;padding:20px 22px;
+  }
+  .skill-card h3{
+    font-size:13px;font-family:var(--mono);color:var(--accent);
+    margin-bottom:10px;letter-spacing:.3px;font-weight:600;
+  }
+  .skill-card p{font-size:14.5px;color:var(--text)}
+
+  /* ---- education ---- */
+  .edu{
+    display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;
+    padding:18px 0;border-top:1px solid var(--border);
+  }
+  .edu:last-child{border-bottom:1px solid var(--border)}
+  .edu-deg{font-size:16px;color:var(--bright);font-weight:600}
+  .edu-sub{font-size:14px;color:var(--muted);margin-top:3px}
+  .edu-meta{font-family:var(--mono);font-size:13px;color:var(--accent);white-space:nowrap;padding-top:2px}
+  .gpa{color:var(--green)}
+
+  /* ---- contact / footer ---- */
+  .contact{text-align:center;padding:90px 0 70px}
+  .contact h2{
+    font-size:clamp(26px,4.4vw,36px);color:var(--bright);
+    font-weight:700;letter-spacing:-.8px;margin-bottom:14px;
+  }
+  .contact p{color:var(--muted);font-size:16px;max-width:460px;margin:0 auto 30px}
+  footer{
+    border-top:1px solid var(--border);
+    padding:26px 0;text-align:center;
+    font-family:var(--mono);font-size:12.5px;color:var(--muted);
+  }
+  footer a:hover{color:var(--accent)}
+
+  /* ---- reveal ---- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#top" class="nav-logo">omer<span>.</span>eliyahu</a>
+    <div class="nav-links">
+      <a href="#projects">Projects</a>
+      <a href="#experience">Experience</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <div class="kicker">// Automation &amp; AI Systems Engineer</div>
+    <h1>Omer Eliyahu</h1>
+    <div class="hero-role">I build <b>automation</b>, <b>cloud infrastructure</b>, and <b>AI&nbsp;agent tooling</b>.</div>
+    <p class="hero-intro">
+      Software engineer working where automation meets applied AI — CI/CD pipelines, multi-environment
+      cloud platforms, and open-source tooling that turns LLM agents into reliable, verifiable tools.
+      Based in Be'er Sheva, Israel.
+    </p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#projects">View Projects</a>
+      <a class="btn btn-ghost" href="https://github.com/omereliy" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        GitHub
+      </a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/omer-eliyahu" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<section class="about reveal" id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">01</span>
+      <span class="sec-title">About</span>
+      <span class="sec-line"></span>
+    </div>
+    <p>
+      I'm a software engineer at the intersection of <strong>automation</strong>,
+      <strong>cloud infrastructure</strong>, and <strong>applied AI</strong>. Most recently I was the solo
+      full-stack and infrastructure engineer at a regulated-AI startup, where I owned the CI/CD automation,
+      a multi-environment AWS&nbsp;+&nbsp;Terraform platform, and durable workflow orchestration — while
+      running a custom multi-agent Claude&nbsp;Code system as part of everyday development.
+    </p>
+    <p>
+      In parallel, I research multi-agent LLM systems grounded in classical planning at
+      <strong>Ben-Gurion University's SPL Lab</strong>, where I'm completing an MSc with an AI
+      specialization. The thread connecting all of it: I like making AI agents into real, dependable
+      tools — built on verifiable foundations, not demos.
+    </p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">02</span>
+      <span class="sec-title">Featured Projects</span>
+      <span class="sec-line"></span>
+    </div>
+
+    <a class="project reveal" href="https://github.com/SPL-BGU/pddl-copilot" target="_blank" rel="noopener">
+      <div class="proj-top">
+        <div class="proj-name">pddl-copilot <span class="arrow">&#8599;</span></div>
+        <div class="proj-context">SPL-BGU&nbsp;· MIT&nbsp;· v2.0.0</div>
+      </div>
+      <span class="proj-tag-role">Open-source MCP plugin marketplace</span>
+      <p class="proj-desc">
+        A Claude Code plugin marketplace that lets LLM agents interact with classical-planning tools
+        through natural language. It packages three pip-installable plugins — a solver (Fast Downward
+        &amp; ENHSP), a validator, and a parser — each exposed as a Model Context Protocol server with
+        accompanying agent skills. The servers are portable across Claude Code, Cursor, and Google
+        Antigravity, with a unified installer and a CI gate running static checks, plugin tests, and
+        MCP-protocol smoke tests on every pull request.
+      </p>
+      <div class="stack">
+        <span class="chip">Python</span>
+        <span class="chip">Model Context Protocol</span>
+        <span class="chip">Claude Code</span>
+        <span class="chip">GitHub Actions CI</span>
+        <span class="chip">Fast Downward / ENHSP</span>
+      </div>
+    </a>
+
+    <a class="project reveal" href="https://github.com/SPL-BGU/pddl-copilot-experiments" target="_blank" rel="noopener">
+      <div class="proj-top">
+        <div class="proj-name">pddl-copilot-experiments <span class="arrow">&#8599;</span></div>
+        <div class="proj-context">SPL-BGU&nbsp;· research</div>
+      </div>
+      <span class="proj-tag-role">Evaluation framework for LLM tool use</span>
+      <p class="proj-desc">
+        An evaluation framework that measures whether language models plan better when given tools.
+        It runs LLMs over five PDDL tasks — solve, validate domain / problem / plan, and simulate — in
+        two conditions: with MCP planning tools and without. Outputs are scored against
+        planner-generated ground truth and aggregated with Wilson 95% confidence intervals. The harness
+        supports resumable runs, fast-feedback partial slices, and large model sweeps submitted as
+        SLURM job arrays on a GPU cluster — the empirical companion to the "Toward PDDL Planning
+        Copilot" research line.
+      </p>
+      <div class="stack">
+        <span class="chip">Python</span>
+        <span class="chip">LLM evaluation</span>
+        <span class="chip">MCP</span>
+        <span class="chip">Ollama</span>
+        <span class="chip">SLURM / HPC</span>
+        <span class="chip">Statistical analysis</span>
+      </div>
+    </a>
+
+    <a class="project reveal" href="https://github.com/omereliy/online_model_learning" target="_blank" rel="noopener">
+      <div class="proj-top">
+        <div class="proj-name">online_model_learning <span class="arrow">&#8599;</span></div>
+        <div class="proj-context">information-gain-AML</div>
+      </div>
+      <span class="proj-tag-role">Active learning of planning models</span>
+      <p class="proj-desc">
+        A research system that learns PDDL action models online — actively choosing which action to
+        execute next by expected information gain, then inferring the underlying model from observed
+        state transitions. The inference step is powered by a custom SAT-based solver doing concurrent
+        constraint search, which substantially cuts the runtime of an otherwise exponential
+        combinatorial problem.
+      </p>
+      <div class="stack">
+        <span class="chip">Python</span>
+        <span class="chip">SAT solvers</span>
+        <span class="chip">PDDL / planning</span>
+        <span class="chip">Active learning</span>
+        <span class="chip">Automated reasoning</span>
+      </div>
+    </a>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">03</span>
+      <span class="sec-title">Experience</span>
+      <span class="sec-line"></span>
+    </div>
+
+    <div class="xp reveal">
+      <div class="xp-date">Nov 2025 – May 2026</div>
+      <div>
+        <div class="xp-role">Software Engineer <span class="xp-org">· Auditale.ai</span></div>
+        <div class="xp-desc">
+          Solo full-stack and infrastructure engineer on a 3-engineer regulated-AI startup. Built CI/CD
+          automation on GitHub Actions, provisioned multi-environment AWS infrastructure with Terraform,
+          and migrated batch processing into durable Temporal workflows — operating a custom multi-agent
+          Claude Code system day to day.
+        </div>
+      </div>
+    </div>
+
+    <div class="xp reveal">
+      <div class="xp-date">Apr 2024 – Present</div>
+      <div>
+        <div class="xp-role">Researcher <span class="xp-org">· Ben-Gurion University, SPL Lab</span></div>
+        <div class="xp-desc">
+          Research multi-agent LLM pipelines that induce executable PDDL domains from natural language,
+          pairing LLM reasoning with classical-planning verifiers. Maintain the pddl-copilot open-source
+          toolchain.
+        </div>
+      </div>
+    </div>
+
+    <div class="xp reveal">
+      <div class="xp-date">Mar 2023 – Aug 2025</div>
+      <div>
+        <div class="xp-role">Combinatorics Tutor <span class="xp-org">· Ben-Gurion University</span></div>
+        <div class="xp-desc">
+          Led 100+ tutorials in discrete mathematics, combinatorics, and graph theory for undergraduate
+          software-engineering students.
+        </div>
+      </div>
+    </div>
+
+    <div class="xp reveal">
+      <div class="xp-date">IDF</div>
+      <div>
+        <div class="xp-role">Combat Engineering Officer <span class="xp-org">· Israel Defense Forces</span></div>
+        <div class="xp-desc">
+          Platoon Leader and Battalion Operations Officer; commanded 35 soldiers, including service in
+          the "Iron Swords" operation.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">04</span>
+      <span class="sec-title">Skills</span>
+      <span class="sec-line"></span>
+    </div>
+    <div class="skill-grid">
+      <div class="skill-card reveal">
+        <h3>AUTOMATION &amp; CI/CD</h3>
+        <p>GitHub Actions, API &amp; integration test automation, build &amp; deploy pipelines, internal developer tooling, Docker.</p>
+      </div>
+      <div class="skill-card reveal">
+        <h3>AI &amp; AGENTS</h3>
+        <p>MCP server design, AI agents &amp; skills, multi-agent Claude Code workflows, LangChain, AWS Bedrock, LLM evaluation.</p>
+      </div>
+      <div class="skill-card reveal">
+        <h3>LANGUAGES</h3>
+        <p>Python (advanced), Java, TypeScript / Node.js, SQL, Bash.</p>
+      </div>
+      <div class="skill-card reveal">
+        <h3>CLOUD &amp; INFRASTRUCTURE</h3>
+        <p>AWS (ECS Fargate, Aurora, IAM), Terraform, multi-environment IaC, Temporal workflows, Linux.</p>
+      </div>
+      <div class="skill-card reveal">
+        <h3>WEB</h3>
+        <p>React, TypeScript, REST API design, multi-tenant PostgreSQL.</p>
+      </div>
+      <div class="skill-card reveal">
+        <h3>CS FOUNDATIONS</h3>
+        <p>Classical planning (PDDL), SAT solvers, automated reasoning, distributed systems, algorithms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="sec-num">05</span>
+      <span class="sec-title">Education</span>
+      <span class="sec-line"></span>
+    </div>
+    <div class="edu reveal">
+      <div>
+        <div class="edu-deg">MSc, Information Systems &amp; Software Engineering</div>
+        <div class="edu-sub">AI Specialization · Ben-Gurion University · <span class="gpa">GPA 91.75</span></div>
+      </div>
+      <div class="edu-meta">Expected Mar 2027</div>
+    </div>
+    <div class="edu reveal">
+      <div>
+        <div class="edu-deg">BSc, Software Engineering</div>
+        <div class="edu-sub">Ben-Gurion University</div>
+      </div>
+      <div class="edu-meta">2025</div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap reveal">
+    <h2>Let's talk</h2>
+    <p>Open to roles in automation, infrastructure, and applied AI. The fastest way to reach me is email.</p>
+    <div class="cta-row" style="justify-content:center">
+      <a class="btn btn-primary" href="mailto:omer10828@gmail.com">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 3h13A1.5 1.5 0 0116 4.5v7A1.5 1.5 0 0114.5 13h-13A1.5 1.5 0 010 11.5v-7A1.5 1.5 0 011.5 3zm.2 1.4l6.3 4.2 6.3-4.2H1.7z"/></svg>
+        omer10828@gmail.com
+      </a>
+      <a class="btn btn-ghost" href="https://www.linkedin.com/in/omer-eliyahu" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn btn-ghost" href="https://github.com/omereliy" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Omer Eliyahu &middot; Be'er Sheva, Israel &middot;
+    <a href="mailto:omer10828@gmail.com">omer10828@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  // nav border on scroll
+  var nav=document.getElementById('nav');
+  window.addEventListener('scroll',function(){
+    nav.classList.toggle('scrolled',window.scrollY>10);
+  });
+  // reveal on scroll
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+</script>
+
+</body>
+</html>
