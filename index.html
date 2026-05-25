@@ -131,7 +131,11 @@
     font-size:21px;color:var(--bright);font-weight:650;
     font-family:var(--mono);letter-spacing:-.5px;
   }
-  .proj-name .arrow{color:var(--accent);transition:transform .2s;display:inline-block}
+  .proj-name .arrow{
+    color:var(--accent);transition:transform .2s;
+    display:inline-block;vertical-align:-2px;
+    width:16px;height:16px;
+  }
   .project:hover .proj-name .arrow{transform:translate(3px,-3px)}
   .proj-context{font-size:12.5px;color:var(--muted);font-family:var(--mono);white-space:nowrap}
   .proj-tag-role{
@@ -272,7 +276,7 @@
 
     <a class="project reveal" href="https://github.com/SPL-BGU/pddl-copilot" target="_blank" rel="noopener">
       <div class="proj-top">
-        <div class="proj-name">pddl-copilot <span class="arrow">&#8599;</span></div>
+        <div class="proj-name">pddl-copilot <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg></div>
         <div class="proj-context">SPL-BGU&nbsp;· MIT&nbsp;· v2.0.0</div>
       </div>
       <span class="proj-tag-role">Open-source MCP plugin marketplace</span>
@@ -295,7 +299,7 @@
 
     <a class="project reveal" href="https://github.com/SPL-BGU/pddl-copilot-experiments" target="_blank" rel="noopener">
       <div class="proj-top">
-        <div class="proj-name">pddl-copilot-experiments <span class="arrow">&#8599;</span></div>
+        <div class="proj-name">pddl-copilot-experiments <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg></div>
         <div class="proj-context">SPL-BGU&nbsp;· research</div>
       </div>
       <span class="proj-tag-role">Evaluation framework for LLM tool use</span>
@@ -320,7 +324,7 @@
 
     <a class="project reveal" href="https://github.com/omereliy/online_model_learning" target="_blank" rel="noopener">
       <div class="proj-top">
-        <div class="proj-name">online_model_learning <span class="arrow">&#8599;</span></div>
+        <div class="proj-name">online_model_learning <svg class="arrow" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg></div>
         <div class="proj-context">information-gain-AML</div>
       </div>
       <span class="proj-tag-role">Active learning of planning models</span>
