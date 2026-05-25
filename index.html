@@ -119,22 +119,23 @@
     border:1px solid var(--border);
     border-radius:14px;
     padding:30px 30px 26px;
-    margin-bottom:22px;
+    margin-bottom:28px;
     transition:border-color .25s,transform .25s;
   }
   .project:hover{border-color:#39435f;transform:translateY(-3px)}
   .proj-top{
-    display:flex;justify-content:space-between;align-items:flex-start;
+    display:flex;justify-content:space-between;align-items:baseline;
     gap:18px;flex-wrap:wrap;margin-bottom:6px;
   }
   .proj-name{
     font-size:21px;color:var(--bright);font-weight:650;
     font-family:var(--mono);letter-spacing:-.5px;
+    display:inline-flex;align-items:center;gap:8px;
+    min-width:0;
   }
   .proj-name .arrow{
     color:var(--accent);transition:transform .2s;
-    display:inline-block;vertical-align:-2px;
-    width:16px;height:16px;
+    width:16px;height:16px;flex-shrink:0;
   }
   .project:hover .proj-name .arrow{transform:translate(3px,-3px)}
   .proj-context{font-size:12.5px;color:var(--muted);font-family:var(--mono);white-space:nowrap}
